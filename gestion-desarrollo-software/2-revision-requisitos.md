@@ -34,6 +34,16 @@ las funciones y datos relacionados a su rol.
 #### Medible
 
 ```text
+El usuario al querer acceder al sistema se le
+solicitarán credenciales como usuario y contraseña para
+poder determinar si es una persona autorizada y qué
+permisos tiene sobre el sistema (administrativo,
+profesional o cliente).
+```
+
+Pa copiar:
+
+```text
 El usuario al querer acceder al sistema se le solicitarán credenciales como usuario y contraseña para poder determinar si es una persona autorizada y qué permisos tiene sobre el sistema (administrativo, profesional o cliente).
 ```
 
@@ -90,10 +100,28 @@ servicios ofrecidos y la confianza en el sistema.
 #### Descripción
 
 ```text
+Un usuario cliente puede convertirse en profesional siempre
+que brinde la información relacionada para una posterior
+revisión por un administrador
+```
+
+Pa copiar
+
+```text
 Un usuario cliente puede convertirse en profesional siempre que brinde la información relacionada para una posterior revisión por un administrador
 ```
 
 #### Medible
+
+```text
+Un cliente podrá convertirse en profesional tras brindar
+una serie de datos como: el oficio que realiza y facilitando
+una serie de identificaciones, (todo lo demás específico
+que pide) para una posterior validación por un administrador
+dentro del sistema, si la información es correcta, el
+administrador podrá autorizar el alta de este usuario como
+un profesional
+```
 
 ```text
 Un cliente podrá convertirse en profesional tras brindar una serie de datos como: el oficio que realiza y facilitando una serie de identificaciones, (todo lo demás específico que pide) para una posterior validación por un administrador dentro del sistema, si la información es correcta, el administrador podrá autorizar el alta de este usuario como un profesional
