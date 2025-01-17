@@ -146,12 +146,105 @@ Para permitir mostrar la información a validar a un usuario administrador
 
 ## FN3. Gestión de clientes.
 
-Descripción: Ambos usuarios Clientes y Administrativo realizarán la consulta. La edición solo la realizará el cliente.
-Los usuarios Administrativos y clientes pueden eliminar el registro.
-El usuario cliente podrá registrar su información tal como: nombre, apellido paterno, apellido materno, dirección, teléfono y correo electrónico.
-Importancia: Esencial.
-Validez:
-● Medible: Se verificará que un cliente pueda registrar, editar y eliminar su información de forma efectiva en el sistema.
-● Alcanzable: Se desarrollará un formulario para que los clientes ingresen su información, validando la entrada de datos.
+**Descripción:** Ambos usuarios Clientes y Administrativo
+realizarán la consulta. La edición solo la realizará el
+cliente.
 
-● Relevante: Facilitar la gestión de la información del cliente es fundamental para ofrecer un servicio personalizado y eficiente.
+Los usuarios Administrativos y clientes pueden eliminar
+el registro. El usuario cliente podrá registrar su
+información tal como: nombre, apellido paterno, apellido
+materno, dirección, teléfono y correo electrónico.
+
+**Importancia:** Esencial.
+
+**Validez:**
+● Medible: Se verificará que un cliente pueda registrar,
+editar y eliminar su información de forma efectiva en el
+sistema.
+
+● Alcanzable: Se desarrollará un formulario para que los
+clientes ingresen su información, validando la entrada de
+datos.
+
+● Relevante: Facilitar la gestión de la información del
+cliente es fundamental para ofrecer un servicio
+personalizado y eficiente.
+
+### Correcciones
+
+#### Descripción
+
+```text
+Un usuario podrá brindar su información para registrarse
+como cliente dentro del sistema
+```
+
+**Razón:** Mandar todo el detalle de funcionamiento a
+Medible yAlcanzable
+
+#### Medible
+
+```text
+Tras proporcionar información pertinente para su registro
+como: nombre, apellido paterno, apellido materno, dirección,
+teléfono y correo electrónico, un usuario podrá crear un
+perfil dentro del sistema con el permiso de cliente
+
+Tanto el usuario de tipo cliente como administrador  serán
+capaces de consultar información sobre otros perfiles creados
+dentro del sistema.
+
+Sólo el cliente será capaz de modificar su propio perfil
+
+El cliente podrá eliminar su propio perfil una vez creado.
+
+El usuario de administrador será capaz de eliminar clientes
+previamente creados dentro del sistema
+```
+
+Pa copiar:
+
+```text
+Tras proporcionar información pertinente para su registro como: nombre, apellido paterno, apellido materno, dirección, teléfono y correo electrónico, un usuario podrá crear un perfil dentro del sistema con el permiso de cliente.
+
+Tanto el usuario de tipo cliente como administrador  serán capaces de consultar información sobre otros perfiles creados dentro del sistema.
+
+Sólo el cliente será capaz de modificar su propio perfil.
+
+El cliente podrá eliminar su propio perfil una vez creado.
+
+El usuario de administrador será capaz de eliminar clientes previamente creados dentro del sistema.
+```
+
+**Razón:** Mover el detalle de la funcionalidad que se
+tenía en descripción a medible y reorganizar las ideas.
+
+#### Alcanzable
+
+Agregar:
+
+```text
+Se tendrá un apartado para con un formularo para modifcar
+la información del perfil actual.
+
+Se brindará un apartado para que un cliente elimine su perfil
+o un administrador tras consultar un cliente pueda eliminar
+este perfil.
+```
+
+Pa copiar:
+
+```
+Se tendrá un apartado para con un formularo para modifcar la información del perfil actual.
+
+Se brindará un apartado para que un cliente elimine su perfil o un administrador tras consultar un cliente pueda eliminar este perfil.
+```
+
+**Razón:** Detallar los apartados que tendrá el sistema
+para las acciones de la gestión
+
+#### Relevante
+
+Quitar `eficiente` de las razones pa' este requisito, cómo
+eficienta un sistema si un señor se pone Don José o El Pepe
+como usuario ajajja
