@@ -1,3 +1,7 @@
+# Configuracion VPN con Wireguard
+
+## Configuracion del lado del servidor
+
 Instalar `wireguard` para configurar túneles, `wireguard` facilita la instalación
 pero complica la administracion, recomendable para no más de 10 host, para cosas
 más complicadas recomiendan `openvpn`
@@ -86,3 +90,75 @@ AllowedIPs = 10.0.0.3
 ```
 
 Guardar en `/etc/wireguard/wgvpn01.conf`
+
+Administrar el servicio
+
+- Iniciar → `systemctl start wg-quick@wgvpn01`
+- Estatus → `systemctl status wg-quick@wgvpn01`
+- Detener → `systemctl stop wg-quick@wgvpn01`
+
+## Configuracion de lado del cliente
+
+[Interface]
+PrivateKey = {privatekeyDelCliente}
+Address = {ipVpnDelCliente}
+DNS = 8.8.8.8
+ListenPort = 51820
+
+[Peer]
+PublicKey = {publickeyDelServer}
+AllowedIPs = 0.0.0.0/0
+Endpoint = {ipRealDelServer}:{puertoDelServer}
+PersistentKeepalive = 30
+
+- Donde `ipRealDelServer` hace referencia a la IP pública
+  de nuestro servidor, en caso de ser un equipo en local o
+  tu red doméstica, deberás configurar una regla `NAT` o
+  `Port Forwarding` para que tu router redireccione las
+  solicitudes al puerto de wireguard a tu equipo que es el
+  sevidor VPN
+
+## Notas extra
+
+### Error 1 No se pudo configurar el DNS
+
+Estando en `archlinux` obtuve el siguiente error al
+activar mi conexión:
+
+```
+# wg-quick up wgvpn01_client.conf
+[#] ip link add wgvpn01_client type wireguard
+[#] wg setconf wgvpn01_client /dev/fd/63
+[#] ip -4 address add 10.0.0.2 dev wgvpn01_client
+[#] ip link set mtu 1420 up dev wgvpn01_client
+[#] resolvconf -a wgvpn01_client -m 0 -x
+Failed to set DNS configuration: Could not activate remote peer 'org.freedesktop.resolve1': activation request failed: unknown unit
+[#] ip link delete dev wgvpn01_client
+```
+
+**Mi fuente confiable indica lo siguiente:**
+
+El error que estás viendo se debe a que WireGuard (a través
+de wg-quick) intenta configurar el DNS usando systemd-resolved,
+pero en tu sistema ese servicio no está activo o instalado.
+Para solucionarlo tienes dos opciones:
+
+1. **Habilitar systemd-resolved:**  
+   Si quieres que wg-quick configure automáticamente el DNS,
+   debes asegurarte de que el servicio systemd-resolved esté
+   activo. En Debian 12 puedes activarlo con:
+
+   ```bash
+   sudo systemctl enable --now systemd-resolved
+   ```
+
+Esto debería permitir que la línea `DNS = 8.8.8.8` se aplique
+sin problemas.
+
+2. **Eliminar la línea de DNS:**  
+    Si prefieres no usar systemd-resolved o ya gestionas el DNS
+   de otra forma, puedes quitar (o comentar) la línea
+   `DNS = 8.8.8.8` en tu archivo de configuración. De esta manera,
+   wg-quick no intentará configurar el DNS y evitarás ese error.
+
+Ambas soluciones son válidas; elige la que mejor se adapte a tu configuración y necesidades.
