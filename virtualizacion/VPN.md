@@ -37,7 +37,7 @@ pub -> IM3AVPvyd+D481wjhLvbHkEnS6TBMY/cn5oAmi1gkW0=
 ```
 
 A las `vpn` se les suele configurar una IP clase A subneteada como clase C.
-Para configurar esto vamos a configurar lo siguiente:
+Para configurar esto vamos a crear un archivo con lo siguiente:
 
 ```
 [Interface]
@@ -91,7 +91,7 @@ AllowedIPs = 10.0.0.3
 
 Guardar en `/etc/wireguard/wgvpn01.conf`
 
-Administrar el servicio
+### Administrar el servicio
 
 - Iniciar → `systemctl start wg-quick@wgvpn01`
 - Estatus → `systemctl status wg-quick@wgvpn01`
@@ -99,6 +99,7 @@ Administrar el servicio
 
 ## Configuracion de lado del cliente
 
+```
 [Interface]
 PrivateKey = {privatekeyDelCliente}
 Address = {ipVpnDelCliente}
@@ -110,6 +111,7 @@ PublicKey = {publickeyDelServer}
 AllowedIPs = 0.0.0.0/0
 Endpoint = {ipRealDelServer}:{puertoDelServer}
 PersistentKeepalive = 30
+```
 
 - Donde `ipRealDelServer` hace referencia a la IP pública
   de nuestro servidor, en caso de ser un equipo en local o
